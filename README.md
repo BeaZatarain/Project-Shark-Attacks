@@ -1,36 +1,41 @@
-# Project-Shark-Attacks
-Data cleaning
+# Project-Shark-Attacks (Data Cleaning)
 
-This project is about cleaning a messy dataset that contains information about shark attacks.
+En estre proyecto consiste en realizar un proceso de limpieza de datos de una "caótica" base de datos de ataques de tiburón. 
 
-In this case, there's not going to be any colum drop and we are going to leave at least 1500 rows mandatory.
+A su vez, tiene como restricción el borrado de columnas y el requisito añadido de que tras la limpieza, el datafreame contenga al menos, 1500 filas. 
+
+Adicionalmente, este proyecto tiene como objetivo analizar si:
+ 1. Los tiburones atacan a más personas que a barcos 
+ 2. Las personas atacadas asumían un riesgo por la actividad que hacían en     el momento del ataque o suele haber más ataques aleatorios.
+ 3. Como se distribuye la fatalidad en función del ataque.
 
 
 ## Importaciones y carga de datos.
 
-The dataframe we are going to clean comes from Kaggle, and we read it in out jupyter notebook as a csv.
+El dataframe sobre el que vamos a trabajar proviene de Kaggle en formato csv y será trabajado en un jupiter notebook. 
 
-The main libraries that are required are: Pandas an Numpy. 
+Las principales librerías que se han utilizado son Pandas y Numpy.
 
-Furtheremore, in order to improve the process, it has been imported:
+Además, con el objetivo de agilizar todo el proceso se han importado también:
 
-import warnings
-warnings.filterwarnings ('ignore')
+     import warnings
+     warnings.filterwarnings ('ignore')
 
-pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', None)
+     pd.set_option('display.max_columns', None)
+     pd.set_option('display.max_rows', None)
 
 
 
 ## Exploración general.
 
 
+## Eliminación de duplicados
 
 ## Exploración de columnas.
 
 -fillna/borrado de registros
 
-## Eliminación de duplicados
+
 
 ## Columnas constantes o de baja varianza
 
