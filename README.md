@@ -1,6 +1,6 @@
 # Project-Shark-Attacks (Data Cleaning)
 
-![Portada](https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png)
+![Portada](https://github.com/BeaZatarain/Project-Shark-Attacks/blob/main/imagenes/titulo.jpg)
 
 
 
@@ -45,7 +45,13 @@ Para la visión más general se ha utilizado lo siguiente:
      
      sharks.shape -> (25723, 24) con lo que hemos podido observar que el df tenía 24 columnas y 25723 filas. 
      
-     sharks.info(memory_usage='deep')-> para tener a simple vista el número de valores no nulos de cada columna
+     sharks.info(memory_usage='deep')-> para tener a simple vista el número de valores no nulos de cada columna, el tipo de dato de cada columna, dtypes y el memory usage (22.8 MB)
+     
+     sharks.describe(include='all').T -> para realizar una exploración estadística del df.
+     
+
+     
+     
 
 
 
