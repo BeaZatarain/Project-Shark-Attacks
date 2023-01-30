@@ -117,6 +117,41 @@ Para limpiar la columna year habría que quitar '.0', por lo tanto, la solución
 
 ### LIMPIEZA COLUMNA TYPE
 
+Esta columna no tiene Nan, por lo que para la limpieza de esta columna tenemos que tener en cuenta varios factores:
+
+  1. La **variable 'sea disaster'** no guarda ninguna relación a priori con ataques de tiburón, ya que, se definen más como accidentes marítimos de barcos (ejemplo el **Titanic**). Por lo que procederemos a eliminarlos de la columna.
+  2. las **variables 'boating' y 'boat'** hacen referencia a ataques de tiburones a barcos no a humanos, por lo que unificaremos los valores en 'boating' (ya que hay más cantidad de esta).
+  3.**¿Qué quiere decir Invalid?** hace referencia a accidentes de personas (a veces no se sabe ni siquiera si han sido en el mar) que no se pueden considerar como un ataque de tiburón. Por lo que la decisión tamada es eliminar dichas filas ya que distorsionan la muestra al no estar relacionadas con tiburones.
+  4. ¿Qué quiere decir que es **Questionable?** -> sólo tenemos dos casos, parece que significa que había un tiburón relacionado pero que o bien no provocó ninguna herida a una persona o dañó una tabla de surf. Por tanto, la solución es eliminar la fila que no hubo heridos e incluir en 'Boating la tabla dañada'.
+  5. ¿Qué diferencia hay entre un ataque provocado o no provocado según los datos? -> esta distincción parece indicar que el ataque provocado hace referencia a casos en los que el animal ha sido pescado/intentado pescar o herido por alguna acción  humana mientras que los no provocados son aquellos en los que no ha intervenido ningún acto humano. 
+
+De cara a nuestro análisis puede ser interesante diferenciar si los ataques han sido a personas o a barcos/vehículos marítimos (tablas de surf, barcas, remos...) por lo que crearemos una columna 'injured' que distinga entre ataque a human y . La **nueva columna en cuestión, se llamará 'injured'**.
+  
+### LIMPIEZA DE COLUMNA COUNTRY (limpieza conjunta de columnas area y location)
+
+OJO: tanto en la columna area como location, seguimos teniendo Nan por lo que en primer lugar, rellenaremos esos valores con 'unknown' al tratarse de columnas categóricas.
+
+En una primera exploración parece que la mayoría de países están correctamente, salvo ciertos casos en los que especifica que fue en dos países o entre dos lugares. Por ello, para poder dejar la información de la columna country lo más limpia y completa posible, nos apoyaremos en las columnas de area y location. 
+
+Como son pocos casos, comprobaremos con las columnas de area y location (también google) y rellenaremos qué país es en cada caso.
+
+En algunos casos sólo especifica océanos, realizaremos una exploración previa. Sin embargo como se puede obsevar abajo, las columnas de area y location no dan suficiente información para poder localizar el país por lo que eliminaremos estas filas.
+
+En definitiva, eliminaremos tanto las que contengan OCEAN como los unknown.
+
+### LIMPIEZA DE LA COLUMNA ACTIVITY
+
+Primero reemplazaremos los Nan por: si type es provoked por 'risky_activity' (puede ser pesca, caza...) y si es unprovoked lo sustituiremos por 'el valor más repetido'(la moda, que en este caso es surfing.
+
+Como se puede observar siguen quedando 30 Nan, Efectivamente, tras realizar una comprobación, vemos que no se han rellenado porque el valor equivalente de type era Boating. Por ello, los rellenaremos con la palabra 'Boating' para seguir teniendo identificado cuando un tiburón ha atacado a un humano o a un barco.
+
+
+### LIMPIEZA DE LA COLUMNA FATAL Y/N
+
+Se trata de una columna en la que si el valor Y el ataque ha sido mortal y si toma el valor N indica que no fue fatal.
+
+Tras realizar una comprobación, parece que esta columna está relacionada con la columna injury, donde especifica la fatalidad del ataque, por lo que rellenaremos los valores Nan completar los datos en función de la descripción dada en la columna injury.
+
 
 ## Columnas constantes o de baja varianza
 
