@@ -39,15 +39,16 @@ Por último se ha importado el archivo csv con la función de pandas pd.read_csv
 
 En primer lugar, se ha realizado una exploración general del df para tener una visión general de su contenido en cuanto a numero de columnas y filas, número de valores nulos...etc
 
-Para la visión más general se ha utilizado lo siguiente:
+Para la visión más general se han explorado los siquientes puntos:
 
-     sharks.head() -> para poder visualizar el encabezado con las columnas del dataframe y tener un vistazo general de los datos que contiene          cada una. 
-     
-     sharks.shape -> (25723, 24) con lo que hemos podido observar que el df tenía 24 columnas y 25723 filas. 
-     
-     sharks.info(memory_usage='deep')-> para tener a simple vista el número de valores no nulos de cada columna, el tipo de dato de cada columna, dtypes y el memory usage (22.8 MB)
-     
-     sharks.describe(include='all').T -> para realizar una exploración estadística del df.
+ - El df está compuesto por 24 columnas y 25723 filas.
+ - El memory usage: 22.8 MB
+ - Sólo dos columnas son numéricas: Year y Original order y por tanto, 22 son categóricas.
+ - También se ha comprobado que todas las columnas presentan una gran cantidad de valores nulos.
+ 
+   *meter imagen 1
+   
+   
      
 
      
@@ -58,9 +59,26 @@ Para la visión más general se ha utilizado lo siguiente:
 
 ## Eliminación de duplicados
 
+A la hora de explorar y limpiar los duplicados, hemos tenido en cuenta dos factores:
+
+ 1. Muchas filas eran en su totalidad valores Nan, por lo que se han borrado 17.020 filas que no aportaban valor por cumplir dicha condición.
+
+ 2. Tras la anterior limpieza, hemos procedido a eliminar las filas duplicadas y tras todo este procedo conjunto el df ha pasado de tener 25723 filas a 6311.
+ 
+Además, tal y como se se ve en la siguiente gráfica, ahora no todas las columnas tienen nulos (o algunas tienen un número relativamente pequeño respecto a la muestra). Por ello, vamos a explorar que columnas son y tratar de identificar la mejor solución para cada una.
+
+*Insertar gráfica 2
+
+
 ## Exploración de columnas.
 
--fillna/borrado de registros
+Antes de comenzar la exploración individual de cada columna, primero realizaremos un análisis más genérico para tener una idea general de la situación de las columnas del df:
+
+La **media de valores** nulos por columna es de 1032, pero hay outliers por lo que el parámetro de guía para seguir explorando debería ser la **mediana**, que es de 48.
+
+Teniendo esta información,como aún tenemos una muestra relativamente grande,vamos a ver la distribución de Nan por filas creando una variable 'nan_filas' y añadiremos una columana **nueva con el número total** de nans que hay en cada fila.  
+
+
 
 
 
