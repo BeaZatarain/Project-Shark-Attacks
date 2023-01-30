@@ -152,13 +152,87 @@ Se trata de una columna en la que si el valor Y el ataque ha sido mortal y si to
 
 Tras realizar una comprobación, parece que esta columna está relacionada con la columna injury, donde especifica la fatalidad del ataque, por lo que rellenaremos los valores Nan completar los datos en función de la descripción dada en la columna injury.
 
+Como tenemos identificados los índices en los que estan los Nan, rellenaremos todos con el valor más repetido ('N') y luego reemplazaremos el único ataque fatal por su indice 6104 con 'Y'.
+
+Para terminar la limpieza de esta columna tenemos que:
+   1. Unificar ' N' con 'N' con función replace.
+   2. Realizar el mismo proceso anterior para ver si podemos comprobar si el ataque fue fatal o no con los valores 'M','2017' y 'UNKNOWN'. Sin embargo, al mostrar la equivalencia con el valor 'UNKNOWN' todos los valores aparecen como 'no details' por lo que al no poder confirmar la fatalidad o no del ataque borraremos las 30 filas.
+   
+### LIMPIEZA DE LA COLUMNA SEX
+
+Comprobamos la relación de los nan cuando la víctima es un barco con la columna type. Como podemos observar, hay casos en los que efectivamente la víctima era un barco y otros en los que eran personas (provocado o no).
+
+Como para nuestro análisis nos interesa saber más si los tiburones atacan más a barcos o a personas, rellenaremos los nan con 'boat' cuando la columna type sea 'Boating' y 'unknown' en el resto de casos (que serán personas, pero nos nos afectará su género).
+
+Una vez rellenados los Nan... El procedimiento de limpieza sería unificar los valores M (hay M y 'M ') y reemplazar la fila donde el valor es N por 'unknown'.
+
+### LIMPIEZA DE LA COLUMNA AGE
+
+Se trata de una columna que además de contener 1475 valores Nan, presenta edades representadas con integers, caracteres especiales o palabras y frases.
+
+Procedimiento de limpieza, relleno de nulos:
+
+Aunque la variable edad no sea significativa para nuestro análisis, para una mayor consistencia de los datos, rellenaremos los nulos con 'boat' cuando el ataque haya sido a un barco y con 'unknown' en el resto de casos.
+
+Por otro lado, nos hemos encontrado con valores 'extraños' por lo que intentaremos unificarlos:
+
+ - Todavía nos podemos encontrar casos en los que la edad no tenga sentido porque fue un ataque a un barco, por lo que reemplazaremos los datos por boat cuando se de el caso.
+ - En algunas ocasiones aparecen dos edades de la siguiente forma '17 & 16'. En estos casos, entendemos que fueron atacadas más de una persona por las que las dejaremos así.
+ -Hay casos que hay que tratar aisladamente, para lo que usaremos la función replace (teen, 20?) y los reemplazaremos por 'unknown.
+ - En muchas ocasiones la edad va seguida de una s, eliminaremos la letra y obtendríamos la edad. 
+
+
+### LIMPIEZA DE LA COLUMNA SPECIES
+
+Comenzamos con la limpieza de valores nulos. Como es una columna categórica y no es relevante el tipo de tiburón para el análisis. Rellenaremos con 'unknown'.
+
+En la mayoría de casos, antes de la palabra shark aparece o bien la raza o bien el tamaño, ambos nos sirven para dejar un poco más limpia la columna por lo que hemos creado una función para limpiar valores de species. Esta función dejaría como valor la palabra anterior a 'shark' y shark. Con ello, para unificar un poco más los valores, pasaremos todo a minúsculas y quitaremos algunos caracteres especiales.
+
+### LIMPIEZA DE LA COLUMNA TIME
+
+Es una columna que tiene NaN y que no nos interesa para el análisis por lo que rellenaremos los valores nulos con 'unknown'.
+
+### LIMPIEZA DE LA COLUMNA ORIGINALORDER
+
+Está compuesta por valores únicos que acaban en .0 (float) por lo que para su limpieza los convertiremos a integer tal y como hicimos con la columna de year.
+
+
+## LIMPIEZA DE NULOS COMPLETADA + Resto de Columnas
+
+Tras las limpiezas individuales que hemos ido realizando, nuestro df ya estaría completamente limpio de valores nulos.
+
+En cuanto a las columnas: investigatororsource, pdf, hreffoemula, casenumber.1, casenumber.2 únicamente nos interesaba que no tuvieran valores nulos, ya que la información que contienen no aporta valor a nuestro análisis.
+
+
+## DATAFRAME TRAS LA LIMPIEZA
+
+ - El df está compuesto por **27 columnas y 3776 filas**.
+ - El memory usage: **6.3 MB**
+ 
+ 
+
 
 ## Columnas constantes o de baja varianza
 
+En las columnas numéricas no nos hemos encontrado ninguna columna constante, sin embargo, la columnna unnamed22 sí. Esto tiene sentido ya que completamos con 'unknown' todos los valores NaN (que eran casi el 100%) y parece ser que con la eliminación de filas ya no haya valores distintos.
+
+No tiene sentido realizar el análisis de columnas de baja varianza ya que casi todas nuestras columnas son categóricas. 
+
 ## Outliers
+
+La única forma de ver si tenemos outliers (por falta de columnas categóricas) sería analizando la columna year y ver la distribución temporal de los ataques de tiburón. 
+
+Como se puede observar en las siguientes gráficas, los ataques de tiburón se concentran sobre todo a partir de 1950, bien por falta de datos de los años anteriores o porque con el paso del tiempo los humanos realizan más actividades en el mar.
+
+*instertar gráficas
 
 ## Colinealidad
 
-## DataFrame Final
+También por ausencia de columnas numéricas no aporta ningún valor realizar un análisis de colinealidad. 
 
-## BONUS - Conclusiones
+## ANÁLISIS COLUMNAS CATEGÓRICAS (Bonus)
+
+El análisis que hemos realizado anteriormente, sólo nos aporta información de la distribución de los ataques de tiburones a lo largo del tiempo. Sin embargo, nosotros queremos analizar si: 
+ 1. Los tiburones atacan a más personas que a barcos 
+ 2. Las personas atacadas asumían un riesgo por la actividad que hacían en el momento del ataque o suele haber más ataques aleatorios. 
+ 3. Como se distribuye la fatalidad en función del ataque.
