@@ -1,6 +1,6 @@
 # Project-Shark-Attacks (Data Cleaning)
 
-![Portada](https://github.com/BeaZatarain/Project-Shark-Attacks/blob/main/imagenes/titulo.jpg)
+           ![Portada](https://github.com/BeaZatarain/Project-Shark-Attacks/blob/main/imagenes/titulo.jpg)
 
 
 
@@ -46,7 +46,7 @@ Para la visión más general se han explorado los siquientes puntos:
  - Sólo dos columnas son numéricas: Year y Original order y por tanto, 22 son categóricas.
  - También se ha comprobado que todas las columnas presentan una gran cantidad de valores nulos.
  
-   *meter imagen 1
+![gráfica 1 nan](https://github.com/BeaZatarain/Project-Shark-Attacks/blob/main/imagenes/grafica_nan1.png)
    
    
      
@@ -67,7 +67,7 @@ A la hora de explorar y limpiar los duplicados, hemos tenido en cuenta dos facto
  
 Además, tal y como se se ve en la siguiente gráfica, ahora no todas las columnas tienen nulos (o algunas tienen un número relativamente pequeño respecto a la muestra). Por ello, vamos a explorar que columnas son y tratar de identificar la mejor solución para cada una.
 
-*Insertar gráfica 2
+![gráfica 2 nan](https://github.com/BeaZatarain/Project-Shark-Attacks/blob/main/imagenes/grafica_nan2.png)
 
 
 ## Exploración de columnas.
