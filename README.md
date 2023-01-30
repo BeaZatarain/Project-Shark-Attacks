@@ -224,7 +224,11 @@ La única forma de ver si tenemos outliers (por falta de columnas categóricas) 
 
 Como se puede observar en las siguientes gráficas, los ataques de tiburón se concentran sobre todo a partir de 1950, bien por falta de datos de los años anteriores o porque con el paso del tiempo los humanos realizan más actividades en el mar.
 
-*instertar gráficas
+![gráfica 1 out](https://github.com/BeaZatarain/Project-Shark-Attacks/blob/main/imagenes/grafica1_outliers.png)
+
+![gráfica 2 out](https://github.com/BeaZatarain/Project-Shark-Attacks/blob/main/imagenes/grafica2_outliers.png)
+
+
 
 ## Colinealidad
 
@@ -233,6 +237,17 @@ También por ausencia de columnas numéricas no aporta ningún valor realizar un
 ## ANÁLISIS COLUMNAS CATEGÓRICAS (Bonus)
 
 El análisis que hemos realizado anteriormente, sólo nos aporta información de la distribución de los ataques de tiburones a lo largo del tiempo. Sin embargo, nosotros queremos analizar si: 
+ 
  1. Los tiburones atacan a más personas que a barcos 
- 2. Las personas atacadas asumían un riesgo por la actividad que hacían en el momento del ataque o suele haber más ataques aleatorios. 
+
+![gráfica 1 conc](https://github.com/BeaZatarain/Project-Shark-Attacks/blob/main/imagenes/imagen_conclusiones.png)
+ 
+ 2. Las personas atacadas asumían un riesgo por la actividad que hacían en el momento del ataque o suele haber más ataques aleatorios.
+ 
+![gráfica 2 conc](https://github.com/BeaZatarain/Project-Shark-Attacks/blob/main/imagenes/conclusiones2.png)
+ 
  3. Como se distribuye la fatalidad en función del ataque.
+ 
+ ![gráfica 3 conc](https://github.com/BeaZatarain/Project-Shark-Attacks/blob/main/imagenes/conclu3.png)
+ 
+ 
